@@ -13,6 +13,7 @@ class LeetCodeSolutions:
         """ 
         Merge the two lists in a one sorted list. 
         The list should be made by splicing together the nodes of the first two lists
+        Return the list in ascending order
         """
         head = ListNode()
         current = head
