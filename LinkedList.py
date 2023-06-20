@@ -46,6 +46,77 @@ class LeetCodeSolutions:
                 return True
         return False
 
+    # 160. Intersection of Two Linked Lists
+
+    def getIntersectionNode(headA: ListNode, headB: ListNode):
+        """
+        Given the heads of two singly linked-lists headA and headB, 
+        return the node at which the two lists intersect. 
+        If the two linked lists have no intersection at all, return null.
+        """
+        lenA = 0
+        lenB = 0
+        nodeA, nodeB = headA, headB
+        # get length of both lists
+        while nodeA:
+            lenA+=1
+            nodeA = nodeA.next
+        while nodeB:
+            lenB += 1
+            nodeB = nodeB.next
+        # get the difference of the lists
+        diff = abs(lenA-lenB)
+
+        #start the lists at the same time
+        if lenA > lenB:
+            while diff > 0:
+                headA = headA.next
+                diff-=1
+        else:
+            while diff > 0:
+                headB = headB.next
+                diff-=1
+        #walk through linked lists in parallel to find where they are equal
+        while headA and headB:
+            if headA == headB:
+                return headA
+            headA = headA.next
+            headB = headB.next
+        return None
+    
+    # 206. Reverse Linked List
+
+    def reverseListIterative(self, head):
+        """ 
+        Given the head of a singly linked list, reverse the list, and return the reversed list.
+        This is the iterative solution
+        """
+        newList = None
+        curr = head
+        while curr:
+            nextNode = curr.next
+            curr.next = newList
+            newList = curr
+            curr = nextNode
+        return newList
+    
+    def reverseListRecursive(self, head):
+        """ 
+        Given the head of a singly linked list, reverse the list, and return the reversed list.
+        This is the recursive solution
+        """
+        if head == None:
+            return None
+        newHead = head
+        if head.next:
+            newHead = self.reverseListRecursive(head.next)
+            head.next.next = head
+        head.next = None
+        return newHead
+
+
+
+
 
 
 
