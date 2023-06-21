@@ -113,6 +113,30 @@ class LeetCodeSolutions:
             head.next.next = head
         head.next = None
         return newHead
+    
+    
+    # 234. Palindrome Linked List
+
+    def isPalindrome(self, head):
+        """
+        Given the head of a singly linked list, return true if it is a 
+        palindrome or false otherwise.
+        """
+        stack = []
+        node = head
+        while node:
+            stack.append(node.val)
+            node = node.next
+        
+        left, right = 0, len(stack)-1
+
+        while left <= right:
+            if stack[left] != stack[right]:
+                return False
+            left+=1
+            right-=1
+        return True
+
 
 
 
