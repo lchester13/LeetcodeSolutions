@@ -61,3 +61,41 @@ class LeetCodeSolutions:
             dfs(left.left, right.right) 
             and dfs(left.right, right.left))
         return dfs(root.left,root.right)
+    
+    # 104. Maximum Depth of Binary Tree
+
+    def maxDepth(self, root):
+        """
+        Given the root of a binary tree, return its maximum depth.
+        """
+        if not root:
+            return 0
+        if not root.left and not root.right:
+            return 1
+
+        def dfs(root, depth):
+            if not root: 
+                return depth
+            return max(dfs(root.left, depth+1), dfs(root.right, depth+1))
+        return dfs(root, 0)
+    
+    # 108. Convert Sorted Array to Binary Search Tree
+
+    def sortedArrayToBST(self, nums):
+        """
+        Given an integer array nums where the elements are sorted in ascending order, 
+        convert it to a height-balanced binary search tree
+        """
+        if not nums:
+            return None
+        def sort(left, right):
+            if left > right:
+                return None
+
+            mid = (left + right) // 2
+
+            root = TreeNode(nums[mid])
+            root.left = sort(left, mid-1)
+            root.right = sort(mid+1, right)
+            return root
+        return sort(0, len(nums)-1)
