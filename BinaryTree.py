@@ -99,3 +99,19 @@ class LeetCodeSolutions:
             root.right = sort(mid+1, right)
             return root
         return sort(0, len(nums)-1)
+
+    # 226. Invert Binary Tree
+
+    def invertTree(self, root):
+        """
+        Given the root of a binary tree, invert the tree, and return its root.
+        """
+        if not root:
+            return None
+        # swap children
+        temp = root.left
+        root.left = root.right
+        root.right = temp
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
