@@ -51,6 +51,3 @@ class LeetCodeSolutions:
                 stack.pop()
         backtrack(0,0)
         return output
-
-
-
