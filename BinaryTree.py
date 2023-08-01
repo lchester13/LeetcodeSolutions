@@ -115,3 +115,7 @@ class LeetCodeSolutions:
         self.invertTree(root.left)
         self.invertTree(root.right)
         return root
+    
+    # 543. Diameter of Binary Tree
+    # def diameterOfBinaryTree(self, root):
+
